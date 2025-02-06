@@ -1,0 +1,27 @@
+{
+  "name": "polity",
+  "private": true,
+  "version": "0.0.1",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently --kill-others --names \"BACK,FRONT\" -c \"blue.bold,green.bold\" \"yarn workspace @polity/backend dev\" \"yarn workspace @polity/frontend dev\"",
+    "dev:backend": "yarn workspace @polity/backend dev",
+    "dev:frontend": "yarn workspace @polity/frontend dev",
+    "build": "yarn workspaces foreach -Aptv run build",
+    "lint": "yarn workspaces foreach -Aptv run lint",
+    "test": "yarn workspaces foreach -Aptv run test",
+    "sync": "yarn workspace @polity/backend sync"
+  },
+  "packageManager": "yarn@4.1.0",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
