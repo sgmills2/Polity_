@@ -23,5 +23,9 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@mui/system": "^7.2.0",
+    "supabase": "2.23.4"
   }
 }

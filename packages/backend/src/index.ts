@@ -1,6 +1,7 @@
-import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import express, { Request, Response, NextFunction } from 'express';
+
 import politicianRoutes from './routes/politicians';
 import syncRoutes from './routes/sync';
 
@@ -18,21 +19,28 @@ app.use(express.json());
 app.use('/api/politicians', politicianRoutes);
 app.use('/api/sync', syncRoutes);
 
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
+// Health check endpoint
+app.get('/health', (_req: Request, res: Response) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Error handling
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
+// Error handling middleware
+app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
+  console.error('Unhandled error:', error);
   res.status(500).json({
-    message: 'Something went wrong!',
-    error: process.env.NODE_ENV === 'development' ? err.message : undefined
+    error: 'Internal server error',
+    message: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong'
   });
 });
 
-// Start server
+// 404 handler
+app.use((_req: Request, res: Response) => {
+  res.status(404).json({ error: 'Route not found' });
+});
+
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-}); 
+  console.log(`🚀 Server running on http://localhost:${port}`);
+  console.log(`📊 API endpoints available at http://localhost:${port}/api`);
+});
+
+export default app; 

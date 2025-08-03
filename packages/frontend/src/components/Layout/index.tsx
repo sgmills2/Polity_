@@ -8,7 +8,6 @@ import {
   ListItemButton,
   ListItemContent,
   Typography,
-  IconButton,
 } from '@mui/joy';
 
 interface LayoutProps {
@@ -18,6 +17,7 @@ interface LayoutProps {
 const navItems = [
   { path: '/', label: 'Home' },
   { path: '/politicians', label: 'Politicians' },
+  { path: '/spectrum', label: 'Political Spectrum', isSpecial: true },
 ];
 
 export default function Layout({ children }: LayoutProps) {
@@ -44,8 +44,28 @@ export default function Layout({ children }: LayoutProps) {
                 component={RouterLink}
                 to={item.path}
                 selected={location.pathname === item.path}
+                sx={item.isSpecial ? {
+                  position: 'relative',
+                  overflow: 'hidden',
+                  '&:hover': {
+                    background: 'linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3)',
+                    backgroundSize: '400% 400%',
+                    animation: 'rainbow 2s ease infinite',
+                    color: 'white',
+                    '& .MuiListItemContent-root': {
+                      color: 'white',
+                    }
+                  },
+                  '@keyframes rainbow': {
+                    '0%': { backgroundPosition: '0% 50%' },
+                    '50%': { backgroundPosition: '100% 50%' },
+                    '100%': { backgroundPosition: '0% 50%' },
+                  }
+                } : {}}
               >
-                <ListItemContent>{item.label}</ListItemContent>
+                <ListItemContent>
+                  {item.label}
+                </ListItemContent>
               </ListItemButton>
             </ListItem>
           ))}

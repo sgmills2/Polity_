@@ -2,8 +2,9 @@ import { serve } from 'https://deno.fresh.dev/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 import { Database } from '../_shared/database.types.ts';
 
-const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+// Updated env var names to match Supabase conventions
+const supabaseUrl = Deno.env.get('URL')!;
+const supabaseServiceKey = Deno.env.get('SERVICE_ROLE_KEY')!;
 const congressApiKey = Deno.env.get('CONGRESS_API_KEY')!;
 
 const supabase = createClient<Database>(supabaseUrl, supabaseServiceKey);

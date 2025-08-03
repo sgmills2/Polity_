@@ -7,7 +7,14 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint src --ext .ts",
-    "sync": "ts-node src/scripts/syncData.ts"
+    "sync": "ts-node src/scripts/syncData.ts",
+    "sync-all-politicians": "ts-node src/scripts/syncAllPoliticians.ts",
+    "clean-duplicates": "ts-node src/scripts/cleanDuplicates.ts",
+    "fresh-sync": "ts-node src/scripts/freshSync.ts",
+    "debug-api": "ts-node src/scripts/debugApi.ts",
+    "check-api-pagination": "ts-node src/scripts/checkApiPagination.ts",
+    "check-schema": "ts-node src/scripts/checkSchema.ts",
+    "migrate": "echo 'Run database migrations manually or through your Supabase dashboard'"
   },
   "dependencies": {
     "@polity/shared": "workspace:*",
@@ -17,13 +24,16 @@
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
-    "zod": "^3.22.4"
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.17",
+    "@types/cors": "^2.8.19",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.11.16",
-    "ts-node": "^10.9.2",
+    "@types/node": "^20.11.17",
+    "@types/xml2js": "^0.4.14",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.3.3"
   }

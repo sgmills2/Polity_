@@ -17,7 +17,7 @@ export const supabase = createClient<Database>(
       persistSession: false
     },
     db: {
-      schema: 'api'
+      schema: 'public'
     },
     global: {
       fetch: (url, init) => {

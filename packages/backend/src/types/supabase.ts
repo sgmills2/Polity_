@@ -3,7 +3,7 @@ export type VoteType = 'Yea' | 'Nay' | 'Present' | 'Not Voting';
 export type PhilosophyType = 'Progressive' | 'Liberal' | 'Moderate' | 'Conservative' | 'Very Conservative';
 
 export interface Database {
-  api: {
+  public: {
     Tables: {
       politicians: {
         Row: {
@@ -19,8 +19,8 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database['api']['Tables']['politicians']['Row'], 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Database['api']['Tables']['politicians']['Insert']>;
+        Insert: Omit<Database['public']['Tables']['politicians']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['politicians']['Insert']>;
       };
       topics: {
         Row: {
@@ -30,8 +30,8 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database['api']['Tables']['topics']['Row'], 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Database['api']['Tables']['topics']['Insert']>;
+        Insert: Omit<Database['public']['Tables']['topics']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['topics']['Insert']>;
       };
       bills: {
         Row: {
@@ -45,16 +45,16 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database['api']['Tables']['bills']['Row'], 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Database['api']['Tables']['bills']['Insert']>;
+        Insert: Omit<Database['public']['Tables']['bills']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['bills']['Insert']>;
       };
       bill_topics: {
         Row: {
           bill_id: string;
           topic_id: string;
         };
-        Insert: Database['api']['Tables']['bill_topics']['Row'];
-        Update: Partial<Database['api']['Tables']['bill_topics']['Row']>;
+        Insert: Database['public']['Tables']['bill_topics']['Row'];
+        Update: Partial<Database['public']['Tables']['bill_topics']['Row']>;
       };
       voting_records: {
         Row: {
@@ -66,8 +66,8 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database['api']['Tables']['voting_records']['Row'], 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Database['api']['Tables']['voting_records']['Insert']>;
+        Insert: Omit<Database['public']['Tables']['voting_records']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['voting_records']['Insert']>;
       };
       political_scores: {
         Row: {
@@ -78,8 +78,8 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database['api']['Tables']['political_scores']['Row'], 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Database['api']['Tables']['political_scores']['Insert']>;
+        Insert: Omit<Database['public']['Tables']['political_scores']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['political_scores']['Insert']>;
       };
       aggregate_scores: {
         Row: {
@@ -90,8 +90,8 @@ export interface Database {
           created_at: string;
           updated_at: string;
         };
-        Insert: Omit<Database['api']['Tables']['aggregate_scores']['Row'], 'id' | 'created_at' | 'updated_at'>;
-        Update: Partial<Database['api']['Tables']['aggregate_scores']['Insert']>;
+        Insert: Omit<Database['public']['Tables']['aggregate_scores']['Row'], 'id' | 'created_at' | 'updated_at'>;
+        Update: Partial<Database['public']['Tables']['aggregate_scores']['Insert']>;
       };
     };
   };
